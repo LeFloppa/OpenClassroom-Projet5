@@ -48,7 +48,6 @@ const dots = dotsContainer.querySelectorAll(".dot");
 dots[0].classList.add("dot_selected");
 
 // Fonction de mise à jour de l'affichage du slider
-
 let currentSlide = 0;
 
 function updateSlider() {
@@ -62,10 +61,18 @@ function updateSlider() {
 //Event Listeners sur les flèches pour modifier le slide au clic
 arrow_right.addEventListener("click", function() {
 	currentSlide++;
+
+	if (currentSlide >= slides.length) {
+		currentSlide = 0;
+	}
 	updateSlider();
 });
 
 arrow_left.addEventListener("click", function() {
   currentSlide--;
+
+  if (currentSlide < 0) {
+	currentSlide = slides.length - 1;
+	}	
   updateSlider();
 });
